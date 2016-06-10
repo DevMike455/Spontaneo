@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Spontaneo</string>
+
+    <string name="btn_appareil_photo">Appareil photo</string>
+    <string name="btn_localisation">Localisation</string>
+
+    <string name="txtZoneCommentaire">Commentaires</string>
+    <string name="txtAideZoneCommentaire">Saisissez ici le volume relevé</string>
+
+    <string name="cancelLocalisation">Annuler</string>
+    <string name="cancelPhoto">Photo annulée</string>
+    <string name="activerLocalisation">Saisissez ici le volume relevé</string>
+    <string name="btnConfirmation">Activer</string>
+    <string name="popUpLocalisationOn">Voulez vous activer la localisation</string>
+    <string name="popUpLocalisationOFF">Voulez vous desactiver la localisation</string>
+    <string name="sauvegarder">Sauvegarder</string>
+    <string name="votre_image">Votre image</string>
+</resources>

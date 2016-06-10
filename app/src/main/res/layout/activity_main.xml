@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/cross_default" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="@dimen/normal_padding"
+        android:text="@string/txtZoneCommentaire"
+        android:textSize="@dimen/normal_text_size"
+        android:textColor="@color/colorPrimaryDark"
+        android:id="@+id/textViewCommentaire"
+        android:layout_above="@+id/commentaire"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/commentaire"
+        android:hint="@string/txtAideZoneCommentaire"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:lines="5"
+        android:layout_gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_appareil_photo"
+        android:id="@+id/buttonCamera"
+        android:layout_below="@+id/buttonLocalisation"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_localisation"
+        android:id="@+id/buttonLocalisation"
+        android:layout_below="@+id/commentaire"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sauvegarder"
+        android:id="@+id/buttonSauvegarde"
+        android:layout_below="@+id/buttonCamera"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
