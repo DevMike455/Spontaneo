@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -34,6 +35,8 @@ public class MainActivity extends Activity {
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
     private static final int PICK_IMAGE_REQUEST = 1200;
     private Uri fileUri;
+    Bitmap help1;
+    ThumbnailUtils thumbnail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
+                fileUri = Uri.fromFile(getOutputMediaFile(MEDIA_TYPE_IMAGE)); // create a file to save the image
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
                 startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
             }
@@ -64,6 +67,7 @@ public class MainActivity extends Activity {
                         .setPositiveButton(R.string.btnConfirmation, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 //TODO remplacer par carto
+                                startActivityForResult(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS), 0);
                             }
                         })
                         .setNegativeButton(R.string.cancelLocalisation, new DialogInterface.OnClickListener() {
@@ -83,7 +87,7 @@ public class MainActivity extends Activity {
         });
     }
 
-    @Override
+   /* @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         try {
@@ -117,12 +121,20 @@ public class MainActivity extends Activity {
         {
             System.out.println(e.toString());
         }
-    }
+    }*/
 
-
-    /** Create a file Uri for saving an image or video */
-    private static Uri getOutputMediaFileUri(int type){
-        return Uri.fromFile(getOutputMediaFile(type));
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
+            if(resultCode == Activity.RESULT_OK) {
+                try {
+                    help1 = MediaStore.Images.Media.getBitmap(getContentResolver(),fileUri);
+                    imageView.setImageBitmap( thumbnail.extractThumbnail(help1,imageView.getWidth(), 800));
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     /** Create a File for saving an image or video */
